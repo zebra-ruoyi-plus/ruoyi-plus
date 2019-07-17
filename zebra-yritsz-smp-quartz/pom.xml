@@ -33,7 +33,7 @@
 		<!-- 通用工具 -->
 		<dependency>
 			<groupId>com.temple.yritsz.smp</groupId>
-			<artifactId>zebra-yritsz-smp-commons</artifactId>
+			<artifactId>zebra-yritsz-smp-core</artifactId>
 			<version>${temple.version}</version>
 		</dependency>
 	</dependencies>

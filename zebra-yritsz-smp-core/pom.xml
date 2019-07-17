@@ -8,10 +8,10 @@
 	</parent>
 
 	<groupId>com.temple.yritsz.smp</groupId>
-	<artifactId>zebra-yritsz-smp-commons</artifactId>
+	<artifactId>zebra-yritsz-smp-core</artifactId>
 	<version>1.0.1</version>
 
-	<name>zebra-yritsz-smp-commons</name>
+	<name>zebra-yritsz-smp-core</name>
 	<description>通用类</description>
 
 	<properties>

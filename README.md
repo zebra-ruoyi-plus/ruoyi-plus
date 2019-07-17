@@ -31,7 +31,7 @@ RuoYi-plus是一款由java开发基于jdk1.8，SpringBoot2.x， springcloud G版
 #### 原版RuoYi升级调整介绍
 - 调整前提环境：中小型项目，并且可以快速搭建新的平台。
 - maven管理：取消项目聚合，本人多接触快速搭建管理平台的需求，评估后感觉聚合项目不太适合，所以改使用普通父类子类集成，有新项目时直接继承统一父类，保障快速开发，版本统一。
-- 项目管理：整合system持久化模块，common通用模块，framework核心模块为zebra-yritsz-smp-commons通用模块，对于中小项目来说，原项目模块太繁琐，而且各个模块分工不明确，整合为一个模块当有新项目需求事可以快速搭建。
+- 项目管理：整合system持久化模块，common通用模块，framework核心模块为zebra-yritsz-commons-dbean通用db-bean模块和zebra-yritsz-smp-core核心模块，对于中小项目来说，原项目模块太繁琐，而且各个模块分工不明确，整合为一个模块当有新项目需求事可以快速搭建。
 - 框架管理：增加tk.mybatis插件，原项目虽然可以用代码生成器直接生成增删改查语句，但是繁琐业务下，需要在xml写sql等，使用tk.mybatis插件可以直接使用封装快速方法ql，极高的保障了开发的效率。
 - 配置管理：增加cloud config配置中心，当项目生态系统不仅限于管理平台，繁琐的配置成为增加工作量和出现问题的关键，所以增加配置中心，统一管理配置文件。
 - 其他修改：增加java代码神器lombok、消息转换器HttpMessageConverter...
@@ -47,13 +47,13 @@ RuoYi-plus是一款由java开发基于jdk1.8，SpringBoot2.x， springcloud G版
 
 #### 项目运行步骤一： **使用配置中心** 
 1. 创建数据库，执行数据库脚本;导入项目，导入完成后需要确保是maven项目，如果不是需要转换成maven项目。
-2. 发布项目到maven仓库，依次为zebra-yritsz-smp-parent->zebra-yritsz-smp-commons->zebra-yritsz-smp-generator/quartz 。
+2. 发布项目到maven仓库，依次为zebra-yritsz-smp-parent->zebra-yritsz-commons-dbean->zebra-yritsz-smp-core/generator/quartz 。
 3. 启动zebra-yritsz-smp-config模块，该模块为springCloud config-server端 ，需要svn服务器或git服务器把配置中心文件放到对应svn/git上，并且需要配置bootstrap.properties文件。![输入图片说明](https://images.gitee.com/uploads/images/2019/0715/134215_78272869_2038874.jpeg "1563169313(1).jpg")
 4. 启动zebra-yritsz-smp-smp，如果使用springCloud config需要配置bootstrap.properties文件。![输入图片说明](https://images.gitee.com/uploads/images/2019/0715/135500_380c9fc3_2038874.jpeg "1563170081(1).jpg")
 
 #### 项目运行步骤二： **不使用配置中心** 
 1. 创建数据库，执行数据库脚本;导入项目，导入完成后需要确保是maven项目，如果不是需要转换成maven项目。
-2. 发布项目到maven仓库，依次为zebra-yritsz-smp-parent->zebra-yritsz-smp-commons->zebra-yritsz-smp-generator/quartz 。
+2. 发布项目到maven仓库，依次为zebra-yritsz-smp-parent->zebra-yritsz-commons-dbean->zebra-yritsz-smp-core/generator/quartz 。
 4. 启动zebra-yritsz-smp-smp。
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0716/092738_c32e9535_2038874.jpeg "1563239374(1).jpg")
 
