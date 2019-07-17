@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('充值成功记录 列表')" />
+<style type="text/css">
+#startTime, #endTime {
+	width: 138px;
+}
+</style>
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>订单编号：<input type="text" name="orderId" id="startTimes" />
+							</li>
+
+							<li>卡号：<input type="text" name="cardNo" />
+							</li>
+							<li class=" " data-type="datetime"><label>创建时间： </label> <input
+								type="text" readonly="readonly" placeholder="开始时间"
+								name="startTime" id="startTime" /> <span>-</span> <input
+								type="text" readonly="readonly" placeholder="开始时间"
+								name="endTime" id="endTime" /></li>
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset();"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+							function reset(){
+								$.form.reset();
+								$.table.search();
+							}
+								</script></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+        var prefix = ctx + "bussiness/rechargeSuccessRecordInfo";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                modalName: "充值成功记录 ",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'orderId', 
+					title : '订单编号',
+				},
+				{
+					field : 'tradeNo', 
+					title : '充值流水号',
+					sortable: false,
+					visible: false
+
+				},
+				{
+					field : 'corpId', 
+					title : '机构代码',
+					sortable: false
+				},
+				{
+					field : 'samId', 
+					title : 'SAM终端号',
+					sortable: false
+				},
+				{
+					field : 'cardNo', 
+					title : '卡号',
+					sortable: false
+				},
+				{
+					field : 'balBef', 
+					title : '充值前卡余额(分)',
+					sortable: false
+				},
+				{
+					field : 'balAtf', 
+					title : '充值后卡余额(分)',
+					sortable: false
+				},
+				{
+					field : 'txnAmt', 
+					title : '实际交易金额(分)',
+					sortable: false
+				},
+				{
+					field : 'txnDate', 
+					title : '交易发生日期',
+					sortable: false
+				},
+				{
+					field : 'txnTime', 
+					title : '交易发生时间',
+					sortable: false
+				},
+				{
+					field : 'txnOnlineAtc', 
+					title : '计数器',
+					sortable: false
+				},
+				{
+					field : 'tAC', 
+					title : 'TAC',
+					sortable: false
+				},
+				{
+					field : 'cardType', 
+					title : '卡种',
+					sortable: false
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				}
+		         ]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+<th:block th:include="include :: datetimepicker-css" />
+<th:block th:include="include :: datetimepicker-js" />
+<script type="text/javascript">
+$('#startTime').datetimepicker({
+    language : 'zh-CN',
+    format : "yyyy-mm-dd HH:mm:ss",
+    minView : 2,
+    autoclose : 1,
+    startView : 3,
+});
+$('#endTime').datetimepicker({
+    language : 'zh-CN',
+    format : "yyyy-mm-dd HH:mm:ss",
+    minView : 2,
+    autoclose : 1,
+    startView : 3,
+});
+</script>
+</html>

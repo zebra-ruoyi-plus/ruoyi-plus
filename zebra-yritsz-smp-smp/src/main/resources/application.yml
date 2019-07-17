@@ -1,0 +1,115 @@
+# \u5f00\u53d1\u73af\u5883\u914d\u7f6e
+server:
+  # \u670d\u52a1\u5668\u7684HTTP\u7aef\u53e3\uff0c\u9ed8\u8ba4\u4e3a80
+  port: 7122
+  servlet:
+    # \u5e94\u7528\u7684\u8bbf\u95ee\u8def\u5f84
+    context-path: /ruoyi-plus
+  tomcat:
+    # tomcat\u7684URI\u7f16\u7801
+    uri-encoding: UTF-8
+    # tomcat\u6700\u5927\u7ebf\u7a0b\u6570\uff0c\u9ed8\u8ba4\u4e3a200
+    max-threads: 800
+    # Tomcat\u542f\u52a8\u521d\u59cb\u5316\u7684\u7ebf\u7a0b\u6570\uff0c\u9ed8\u8ba4\u503c25
+    min-spare-threads: 30
+ 
+# \u65e5\u5fd7\u914d\u7f6e
+logging:
+  level:
+    com.ruoyi: debug
+    org.springframework: warn
+
+# \u7528\u6237\u914d\u7f6e
+user:
+  password:
+    # \u5bc6\u7801\u9519\u8bef{maxRetryCount}\u6b21\u9501\u5b9a10\u5206\u949f
+    maxRetryCount: 5
+
+# Spring\u914d\u7f6e
+spring:
+  # \u6a21\u677f\u5f15\u64ce
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # \u7981\u7528\u7f13\u5b58
+    cache: false
+  # \u8d44\u6e90\u4fe1\u606f
+  messages:
+    # \u56fd\u9645\u5316\u8d44\u6e90\u6587\u4ef6\u8def\u5f84
+    basename: static/i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles: 
+    active: druid
+  # \u6587\u4ef6\u4e0a\u4f20
+  servlet:
+     multipart:
+       # \u5355\u4e2a\u6587\u4ef6\u5927\u5c0f
+       max-file-size:  10MB
+       # \u8bbe\u7f6e\u603b\u4e0a\u4f20\u7684\u6587\u4ef6\u5927\u5c0f
+       max-request-size:  20MB
+  # \u670d\u52a1\u6a21\u5757
+  devtools:
+    restart:
+      # \u70ed\u90e8\u7f72\u5f00\u5173
+      enabled: false
+
+# MyBatis
+mybatis:
+    # \u641c\u7d22\u6307\u5b9a\u5305\u522b\u540d
+    typeAliasesPackage: com.zebra
+    # \u914d\u7f6emapper\u7684\u626b\u63cf\uff0c\u627e\u5230\u6240\u6709\u7684mapper.xml\u6620\u5c04\u6587\u4ef6
+    mapperLocations: classpath*:mapper/**/*Mapper.xml
+    # \u52a0\u8f7d\u5168\u5c40\u7684\u914d\u7f6e\u6587\u4ef6
+    configLocation: classpath:mybatis/mybatis-config.xml
+
+# PageHelper\u5206\u9875\u63d2\u4ef6
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql 
+
+# Shiro
+shiro:
+  user:
+    # \u767b\u5f55\u5730\u5740
+    loginUrl: /login
+    # \u6743\u9650\u8ba4\u8bc1\u5931\u8d25\u5730\u5740
+    unauthorizedUrl: /unauth
+    # \u9996\u9875\u5730\u5740
+    indexUrl: /index
+    # \u9a8c\u8bc1\u7801\u5f00\u5173
+    captchaEnabled: true
+    # \u9a8c\u8bc1\u7801\u7c7b\u578b math \u6570\u7ec4\u8ba1\u7b97 char \u5b57\u7b26
+    captchaType: char
+  cookie:
+    # \u8bbe\u7f6eCookie\u7684\u57df\u540d \u9ed8\u8ba4\u7a7a\uff0c\u5373\u5f53\u524d\u8bbf\u95ee\u7684\u57df\u540d
+    domain: 
+    # \u8bbe\u7f6ecookie\u7684\u6709\u6548\u8bbf\u95ee\u8def\u5f84
+    path: /
+    # \u8bbe\u7f6eHttpOnly\u5c5e\u6027
+    httpOnly: true
+    # \u8bbe\u7f6eCookie\u7684\u8fc7\u671f\u65f6\u95f4\uff0c\u5929\u4e3a\u5355\u4f4d
+    maxAge: 30
+  session:
+    # Session\u8d85\u65f6\u65f6\u95f4\uff08\u9ed8\u8ba430\u5206\u949f\uff09
+    expireTime: 30
+    # \u540c\u6b65session\u5230\u6570\u636e\u5e93\u7684\u5468\u671f\uff08\u9ed8\u8ba41\u5206\u949f\uff09
+    dbSyncPeriod: 1
+    # \u76f8\u9694\u591a\u4e45\u68c0\u67e5\u4e00\u6b21session\u7684\u6709\u6548\u6027\uff0c\u9ed8\u8ba4\u5c31\u662f10\u5206\u949f
+    validationInterval: 10
+    # \u540c\u4e00\u4e2a\u7528\u6237\u6700\u5927\u4f1a\u8bdd\u6570\uff0c\u6bd4\u59822\u7684\u610f\u601d\u662f\u540c\u4e00\u4e2a\u8d26\u53f7\u5141\u8bb8\u6700\u591a\u540c\u65f6\u4e24\u4e2a\u4eba\u767b\u5f55\uff08\u9ed8\u8ba4-1\u4e0d\u9650\u5236\uff09
+    maxSession: -1
+    # \u8e22\u51fa\u4e4b\u524d\u767b\u5f55\u7684/\u4e4b\u540e\u767b\u5f55\u7684\u7528\u6237\uff0c\u9ed8\u8ba4\u8e22\u51fa\u4e4b\u524d\u767b\u5f55\u7684\u7528\u6237
+    kickoutAfter: false
+
+# \u9632\u6b62XSS\u653b\u51fb
+xss: 
+  # \u8fc7\u6ee4\u5f00\u5173
+  enabled: true
+  # \u6392\u9664\u94fe\u63a5\uff08\u591a\u4e2a\u7528\u9017\u53f7\u5206\u9694\uff09
+  excludes: /system/notice/*
+  # \u5339\u914d\u94fe\u63a5
+  urlPatterns: /system/*,/monitor/*,/tool/*

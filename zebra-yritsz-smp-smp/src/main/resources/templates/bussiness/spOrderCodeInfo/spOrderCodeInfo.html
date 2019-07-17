@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('sp订单列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>
+								充值流水号：<input type="text" name="tradeNo"/>
+							</li>
+
+							<li>
+								状态：<input type="text" name="sTATUS"/>
+							</li>
+
+							<li>
+								卡号：<input type="text" name="cardNo"/>
+							</li>
+
+							<li>
+								充值金额：<input type="text" name="rechargeAmount"/>
+							</li>
+
+							<li>
+								seid：<input type="text" name="sEID"/>
+							</li>
+
+							<li>
+								更新时间：<input type="text" name="updateTime"/>
+							</li>
+
+							<li>
+								创建时间：<input type="text" name="createTime"/>
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="bussiness:spOrderCodeInfo:add">
+					<i class="fa fa-plus"></i> 添加
+				</a>
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="bussiness:spOrderCodeInfo:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a>
+				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="bussiness:spOrderCodeInfo:remove">
+					<i class="fa fa-remove"></i> 删除
+				</a>
+				<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="bussiness:spOrderCodeInfo:export">
+						<i class="fa fa-download"></i> 导出
+				 </a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('bussiness:spOrderCodeInfo:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('bussiness:spOrderCodeInfo:remove')}]];
+        var prefix = ctx + "bussiness/spOrderCodeInfo";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+				exportUrl: prefix + "/export",
+                modalName: "sp订单",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'orderId', 
+					title : '订单号',
+					visible: false
+				},
+				{
+					field : 'tradeNo', 
+					title : '充值流水号',
+					sortable: true
+				},
+				{
+					field : 'sTATUS', 
+					title : '状态',
+					sortable: true
+				},
+				{
+					field : 'cardNo', 
+					title : '卡号',
+					sortable: true
+				},
+				{
+					field : 'rechargeAmount', 
+					title : '充值金额',
+					sortable: true
+				},
+				{
+					field : 'sEID', 
+					title : 'seid',
+					sortable: true
+				},
+				{
+					field : 'updateTime', 
+					title : '更新时间',
+					sortable: true
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				},
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.orderId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.orderId + '\')"><i class="fa fa-remove"></i>删除</a>');
+						return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

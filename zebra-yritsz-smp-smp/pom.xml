@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.temple.yritsz.parent</groupId>
+		<artifactId>zebra-yritsz-parent</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.temple.yritsz.smp</groupId>
+	<artifactId>zebra-yritsz-smp</artifactId>
+	<version>1.0.1</version>
+	<name>zebra-yritsz-smp</name>
+	<description>管理平台</description>
+
+	<properties>
+		<temple.version>1.0.1</temple.version>
+	</properties>
+
+	<dependencies>
+		<!-- SpringBoot集成thymeleaf模板 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- spring-boot-devtools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional> <!-- 表示依赖不会传递 -->
+		</dependency>
+
+		<!-- swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+
+		<!--防止进入swagger页面报类型转换错误，排除2.9.2中的引用，手动增加1.5.21版本 -->
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-models</artifactId>
+			<version>1.5.21</version>
+		</dependency>
+		<!-- swagger2-UI -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+
+		<!-- 定时任务 -->
+		<dependency>
+			<groupId>com.temple.yritsz.smp</groupId>
+			<artifactId>zebra-yritsz-smp-quartz</artifactId>
+			<version>${temple.version}</version>
+		</dependency>
+		<!-- 代码生成 -->
+		<dependency>
+			<groupId>com.temple.yritsz.smp</groupId>
+			<artifactId>zebra-yritsz-smp-generator</artifactId>
+			<version>${temple.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- 编译插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerVersion>1.8</compilerVersion>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
+						<addMavenDescriptor>false</addMavenDescriptor>
+						<manifest>
+							<!-- 应用的main class -->
+							<mainClass>com.zebra.Application</mainClass>
+							<!-- 是否要把第三方jar放到manifest的classpath中 -->
+							<addClasspath>true</addClasspath>
+							<!-- 生成的manifest中classpath的前缀，因为要把第三方jar放到lib目录下，所以classpath的前缀是lib/ -->
+							<classpathPrefix>lib/</classpathPrefix>
+							<useUniqueVersions>false</useUniqueVersions>
+						</manifest>
+
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<!-- Specifies the configuration file of the assembly plugin -->
+					<descriptors>
+						<descriptor>src/main/assembly/package.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+	</build>
+</project>

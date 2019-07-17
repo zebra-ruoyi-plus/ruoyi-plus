@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('用户应用 列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>SEID：<input type="text" name="seId" /></li>
+
+							<li>应用/安全域 AID：<input type="text" name="aID" /></li>
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset()"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+										function reset() {
+											$.form.reset();
+											$.table.search();
+										}
+									</script></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+		var prefix = ctx + "bussiness/userAppInfo";
+		var bussiness_type = [[${@dict.getType('bussiness_type')}]];
+		var bussiness_states = [[${@dict.getType('bussiness_states')}]];
+
+		$(function() {
+			var options = {
+				url : prefix + "/list",
+				modalName : "用户应用 ",
+				showExport : true,
+				columns : [ {
+					checkbox : true
+				}, {
+					field : 'seId',
+					title : 'SE_ID',
+				}, {
+					field : 'aID',
+					title : '应用/安全域 AID',
+				}, {
+					field : 'tYPE',
+					title : '类型',
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(bussiness_type, value);
+					}
+				}, {
+					field : 'sTATES',
+					title : '应用/安全域状态',
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(bussiness_states, value);
+					}
+				}, {
+					field : 'superSdAid',
+					title : '所属安全域 AID',
+				}, {
+					field : 'createTime',
+					title : '配置时间',
+					sortable : true
+				}, {
+					field : 'updateTime',
+					title : '最后操作时间',
+					sortable : true
+				} ]
+			};
+			$.table.init(options);
+		});
+	</script>
+</body>
+</html>

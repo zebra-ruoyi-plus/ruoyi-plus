@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('个人化数据 列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>卡号：<input type="text" name="cardNo" />
+							</li>
+							<li>是否使用：<select name="isUsed"
+								th:with="type=${@dict.getType('bussiness_isUsed')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+										th:value="${dict.dictValue}"></option>
+							</select></li>
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset()"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+							function reset(){
+								$.form.reset();
+								$.table.search();
+							}
+								</script></li>
+
+						</ul>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+		var datas = [[${@dict.getType('bussiness_isUsed')}]];
+
+        var prefix = ctx + "bussiness/personalizationData";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                modalName: "个人化数据 ",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'cardNo', 
+					title : '卡号',
+				},
+				{
+					field : 'tkIndex', 
+					title : '传输保护密钥索引号',
+					sortable: false
+				},	{
+					field : 'tkFactor', 
+					title : '传输密钥分散因子',
+					sortable: false
+				},
+				{
+					field : 'messageCode', 
+					title : '住建部消息认证码',
+					sortable: false
+				},
+				{
+					field : 'cardAts', 
+					title : 'ATS',
+					sortable: false
+				},
+				{
+					field : 'cardData', 
+					title : '卡数据',
+					sortable: false,
+					visible: false
+				},
+			
+				{
+					field : 'isUsed', 
+					title : '数据是否已使用',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas, value);
+					}
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				},
+				{
+					field : 'updateTime', 
+					title : '更新时间',
+					sortable: true
+				} ]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

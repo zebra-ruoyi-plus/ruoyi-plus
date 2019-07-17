@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('辅助安全域 列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>安全域AID：<input type="text" name="nAME" /></li>
+							<li>安全域名称：<input type="text" name="nAME" />
+							</li>
+
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset()"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+							function reset(){
+								$.form.reset();
+								$.table.search();
+							}
+								</script></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-success" onclick="$.operate.add()"
+					shiro:hasPermission="bussiness:supplementarySecurityDomain:add">
+					<i class="fa fa-plus"></i> 添加
+				</a> <a class="btn btn-primary btn-edit disabled"
+					onclick="$.operate.edit()"
+					shiro:hasPermission="bussiness:supplementarySecurityDomain:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a> <a class="btn btn-danger btn-del btn-del disabled"
+					onclick="$.operate.removeAll()"
+					shiro:hasPermission="bussiness:supplementarySecurityDomain:remove">
+					<i class="fa fa-remove"></i> 删除
+				</a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('bussiness:supplementarySecurityDomain:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('bussiness:supplementarySecurityDomain:remove')}]];
+		var datas_operResult = [[${@dict.getType('bussiness_operResult')}]];
+		var datas_supportedLowestSecurityLevel = [[${@dict.getType('bussiness_supportedLowestSecurityLevel')}]];
+		var datas_supportedSecurityChannelProtocolVersion = [[${@dict.getType('bussiness_spProtocolVersion')}]];
+		var datas_keyUpdate = [[${@dict.getType('bussiness_keyUpdate')}]];
+
+        var prefix = ctx + "bussiness/supplementarySecurityDomain";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                modalName: "辅助安全域 ",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'aID', 
+					title : '安全域AID',
+				},
+				{
+					field : 'nAME', 
+					title : '安全域名称',
+					sortable: false
+				},
+				{
+					field : 'pRIVILEGES', 
+					title : '辅助安全域权限',
+					sortable: false
+				},
+				{
+					field : 'kVN', 
+					title : '安全域密钥版本号',
+					sortable: false
+				},
+				{
+					field : 'implOptions', 
+					title : '实现方式',
+					sortable: false
+				},
+				{
+					field : 'supportedLowestSecurityLevel', 
+					title : '支持的最低安全级别',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas_supportedLowestSecurityLevel, value);
+					}
+				},
+				{
+					field : 'supportedSecurityChannelProtocolVersion', 
+					title : '支持的安全通道协议版本',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas_supportedSecurityChannelProtocolVersion, value);
+					}
+				},	{
+					field : 'keyUpdate', 
+					title : '是否更新安全域初始密钥',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas_keyUpdate, value);
+					}
+				},
+				{
+					field : 'initKeyIndex', 
+					title : '初始安全域根密钥索引号',
+					sortable: false
+				},
+				{
+					field : 'updateKeyIndex', 
+					title : '更新后安全域根密钥索引号',
+					sortable: false
+				},
+				{
+					field : 'adminName', 
+					title : '操作管理员',
+					sortable: false,
+					visible: false
+				},
+				{
+					field : 'createTime', 
+					title : '配置时间',
+					sortable: false,
+					visible: false
+				},
+				{
+					field : 'updateTime', 
+					title : '更新时间',
+					sortable: true
+				},
+			
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.aID + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.aID + '\')"><i class="fa fa-remove"></i>删除</a>');
+						return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

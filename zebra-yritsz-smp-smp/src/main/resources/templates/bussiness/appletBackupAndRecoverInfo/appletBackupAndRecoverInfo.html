@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('应用备份和恢复 列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>移除订单号：<input type="text" name="moveoutOrderid" />
+							</li>
+
+							<li>恢复订单号：<input type="text" name="recoverOrderid" />
+							</li>
+
+
+							<li>旧SEID：<input type="text" name="oldSeId" />
+							</li>
+
+							<li>新SEID：<input type="text" name="newSeId" />
+							</li>
+
+							<li>卡号：<input type="text" name="cardNo" />
+							</li>
+
+							<li>业务状态： <select name="mStatus"
+								th:with="type=${@dict.getType('bussiness_mStatus')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+										th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset()"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+									 function reset(){
+								$.form.reset(); $.table.search(); } </script></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+		var datas = [[${@dict.getType('bussiness_mStatus')}]];
+        var prefix = ctx + "bussiness/appletBackupAndRecoverInfo";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                modalName: "应用备份和恢复 ",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'mId', 
+					title : '业务标识',
+					visible: false
+				},
+				{
+					field : 'moveoutOrderid', 
+					title : '移除订单号',
+					sortable: false
+				},
+				{
+					field : 'recoverOrderid', 
+					title : '恢复订单号',
+					sortable: false
+				},
+				{
+					field : 'merchantId', 
+					title : '商户ID',
+					sortable: false
+				},
+				{
+					field : 'userId', 
+					title : '用户账号',
+					sortable: false
+				},
+				{
+					field : 'oldSeId', 
+					title : '旧SEID',
+					sortable: false
+				},
+				{
+					field : 'newSeId', 
+					title : '新SEID',
+					sortable: false
+				},
+				{
+					field : 'cardNo', 
+					title : '卡号',
+					sortable: false
+				},
+				{
+					field : 'cardBalance', 
+					title : '卡余额(分)',
+					sortable: false
+				},
+				{
+					field : 'moveoutDeviceModel', 
+					title : '迁出的手机设备型号',
+					sortable: false
+				},
+				{
+					field : 'recoverDeviceModel', 
+					title : '迁入手机设备型号',
+					sortable: false
+				},
+				{
+					field : 'mStatus', 
+					title : '业务状态',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas, value);
+					}
+				},
+				{
+					field : 'cardInfoBak', 
+					title : '卡备份信息',
+					sortable: false,
+					visible: false
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				},
+				{
+					field : 'updateTime', 
+					title : '更新时间',
+					sortable: false
+				}
+		        ]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

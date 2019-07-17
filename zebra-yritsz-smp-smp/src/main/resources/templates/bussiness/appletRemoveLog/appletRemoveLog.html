@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('应用移除日志 列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>SEID：<input type="text" name="seId" />
+							</li>
+
+							<li>卡号：<input type="text" name="cARDNO" />
+							</li>
+
+							<li>移除订单号：<input type="text" name="oRDERID" />
+							</li>
+
+							<li>操作类型： <select name="operType"
+								th:with="type=${@dict.getType('bussiness_operType')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+										th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li>处理结果： <select name="operResult"
+								th:with="type=${@dict.getType('bussiness_operResult')}">
+									<option value="">所有</option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}"
+										th:value="${dict.dictValue}"></option>
+							</select>
+							</li>
+							<li class=" " data-type="datetime"><label>创建时间： </label> <input
+								type="text" readonly="readonly" placeholder="开始时间"
+								name="startTime" id="startTime" /> <span>-</span> <input
+								type="text" readonly="readonly" placeholder="开始时间"
+								name="endTime" id="endTime" /></li>
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset()"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+							function reset(){
+								$.form.reset();
+								$.table.search();
+							}
+								</script></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+		var datas = [[${@dict.getType('bussiness_operType')}]];
+		var datas_operResult = [[${@dict.getType('bussiness_operResult')}]];
+        var prefix = ctx + "bussiness/appletRemoveLog";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                modalName: "应用移除日志 ",
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'iD', 
+					title : '主键',
+					visible: false
+				},
+				{
+					field : 'seId', 
+					title : 'SEID',
+					sortable: false
+				},	{
+					field : 'cARDBALANCE', 
+					title : '卡片余额',
+					sortable: false
+				},{
+					field : 'cARDNO', 
+					title : '卡号',
+					sortable: false
+				},
+				{
+					field : 'deviceModel', 
+					title : '设备类型',
+					sortable: false
+				},
+				{
+					field : 'merchantId', 
+					title : '商户号',
+					sortable: false
+				},
+				{
+					field : 'operType', 
+					title : '操作类型',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas, value);
+					}
+				},
+				
+			
+				{
+					field : 'oRDERID', 
+					title : '移除订单号',
+					sortable: false
+				},
+				{
+					field : 'rEASON', 
+					title : '原因',
+					sortable: false
+				},
+				{
+					field : 'operResult', 
+					title : '操作结果',
+					sortable: false,
+					formatter : function(value) {
+		            	return $.table.selectDictLabel(datas_operResult, value);
+					}
+				},
+				{
+					field : 'oPERATOR', 
+					title : '操作人',
+					sortable: false,
+					visible: false
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				},
+				{
+					field : 'updateTime', 
+					title : '修改时间',
+					sortable: false,
+					visible: false
+				} ]
+            };
+            $.table.init(options);
+        });
+    </script>
+	<th:block th:include="include :: datetimepicker-css" />
+	<th:block th:include="include :: datetimepicker-js" />
+	<script type="text/javascript">
+$('#startTime').datetimepicker({
+    language : 'zh-CN',
+    format : "yyyy-mm-dd HH:mm:ss",
+    minView : 2,
+    autoclose : 1,
+    startView : 3,
+});
+$('#endTime').datetimepicker({
+    language : 'zh-CN',
+    format : "yyyy-mm-dd HH:mm:ss",
+    minView : 2,
+    autoclose : 1,
+    startView : 3,
+});
+</script>
+</body>
+</html>

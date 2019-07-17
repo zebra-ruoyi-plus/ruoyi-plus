@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>RuoYi-plus管理平台</title>
+<meta name="description" content="RuoYi-plus平台">
+<link href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link href="../static/css/font-awesome.min.css"
+	th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+<link href="../static/css/style.css" th:href="@{/css/style.css}"
+	rel="stylesheet" />
+<link href="../static/css/login.min.css" th:href="@{/css/login.min.css}"
+	rel="stylesheet" />
+<link href="../static/ruoyi/css/ry-ui.css"
+	th:href="@{/ruoyi/css/ry-ui.css?v=3.4.0}" rel="stylesheet" />
+<!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+<link rel="shortcut icon" href="../static/favicon.ico"
+	th:href="@{favicon.ico}" />
+<style type="text/css">
+label.error {
+	position: inherit;
+}
+
+.login_li {
+	margin-top: 5px;
+}
+</style>
+<script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+</head>
+
+<body class="signin">
+
+	<div class="signinpanel">
+		<div class="row">
+			<div class="col-sm-7">
+				<div class="signin-info">
+					<div class="logopanel m-b">
+						<h1>
+							<!-- <img alt="[ 若依 ]" src="../static/ruoyi.png" th:src="@{/ruoyi.png}"> -->
+						</h1>
+					</div>
+					<div class="m-b"></div>
+					<h3>
+						欢迎使用 <strong>RuoYi-plus开源后台管理系统</strong><br> <br>
+					</h3>
+					<ul class="m-b" style="margin: 51px -100px;">
+						<!-- 	<img alt="" th:src="@{/img/pic_2.png}"> -->
+
+						<li><i class="fa fa-arrow-circle-o-right m-r-xs">
+								基于jdk1.8、SpringBoot2.x、 springcloud G版本</i></li>
+						<li class="login_li"><i
+							class="fa fa-arrow-circle-o-right m-r-xs">
+								公司管理平台旧版本升级、新平台搭建快速整合、接私活利 器</i></li>
+						<li class="login_li"><i
+							class="fa fa-arrow-circle-o-right m-r-xs"> 代码清晰整洁、
+								界面简洁美观、快速搭建无任何依赖</i></li>
+						<li class="login_li"><i
+							class="fa fa-arrow-circle-o-right m-r-xs"> 本项目是在开源项目RuoYi（若依）
+								的基础上进行升级调整，感谢若依大神。</i></li>
+						<li class="login_li"><i
+							class="fa fa-arrow-circle-o-right m-r-xs">
+								官方技术QQ交流号：1579927646 </i></li>
+						<li class="login_li" s><i
+							class="fa fa-arrow-circle-o-right m-r-xs">
+								官方QQ技术交流群：687672649<a target="_blank"
+								href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0"
+									src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus"
+									title="ruoyi-plus"></a>
+
+						</i></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<form id="signupForm">
+					<h4 class="no-margins">登录：</h4>
+					<p class="m-t-md">RuoYi-plus平台</p>
+					<input type="text" name="username" class="form-control uname"
+						placeholder="用户名" value="tecom" /> <input type="password"
+						name="password" class="form-control pword" placeholder="密码"
+						value="123456" />
+					<div class="row m-t" th:if="${captchaEnabled==true}">
+						<div class="col-xs-6">
+							<input type="text" name="validateCode" class="form-control code"
+								placeholder="验证码" maxlength="5" autocomplete="off">
+						</div>
+						<div class="col-xs-6">
+							<a href="javascript:void(0);" title="点击更换验证码"> <img
+								th:src="@{captcha/captchaImage(type=${captchaType})}"
+								class="imgcode" width="85%" />
+							</a>
+						</div>
+					</div>
+					<div class="checkbox-custom"
+						th:classappend="${captchaEnabled==false} ? 'm-t'">
+						<input type="checkbox" id="rememberme" name="rememberme">
+						<label for="rememberme">记住我</label>
+					</div>
+					<button class="btn btn-success btn-block" id="btnSubmit"
+						data-loading="正在验证登录，请稍后...">登录</button>
+				</form>
+			</div>
+		</div>
+		<div class="signup-footer">
+			<div class="pull-left">
+				&copy; Copyright 2019 <br> <a href="#" target="_blank"
+					rel="nofollow">RuoYi-plus平台</a><br>
+			</div>
+		</div>
+	</div>
+	<script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
+	<!-- 全局js -->
+	<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script src="../static/js/bootstrap.min.js"
+		th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- 验证插件 -->
+	<script src="../static/ajax/libs/validate/jquery.validate.min.js"
+		th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
+	<script src="../static/ajax/libs/validate/messages_zh.min.js"
+		th:src="@{/ajax/libs/validate/messages_zh.min.js}"></script>
+	<script src="../static/ajax/libs/layer/layer.min.js"
+		th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+	<script src="../static/ajax/libs/blockUI/jquery.blockUI.js"
+		th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+	<script src="../static/ruoyi/js/ry-ui.js"
+		th:src="@{/ruoyi/js/ry-ui.js?v=3.4.0}"></script>
+	<script src="../static/ruoyi/login.js" th:src="@{/ruoyi/login.js}"></script>
+</body>
+</html>

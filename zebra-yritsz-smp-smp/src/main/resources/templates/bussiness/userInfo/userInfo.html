@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('用户应用 列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+
+							<li>SEID：<input type="text" name="seId" />
+							</li>
+							<li>手机号码：<input type="text" name="mSISDN" />
+							</li>
+
+
+
+							<li><a class="btn btn-primary btn-rounded btn-sm"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="reset()"><i
+									class="fa fa-refresh"></i>&nbsp;重置</a> <script
+									type="text/javascript">
+										function reset() {
+											$.form.reset();
+											$.table.search();
+										}
+									</script></li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:inline="javascript">
+		var prefix = ctx + "bussiness/userInfo";
+		$(function() {
+			var options = {
+				url : prefix + "/list",
+				modalName : "用户应用 ",
+				showExport : true,
+				columns : [ {
+					checkbox : true
+				}, {
+					field : 'seId',
+					title : 'SE_ID'
+				}, {
+					field : 'devicesModel',
+					title : '设备标识'
+				}, {
+					field : 'cPLC',
+					title : 'CPLC值'
+				}, {
+					field : 'mSISDN',
+					title : '手机号码'
+				}, {
+					field : 'iMEI',
+					title : 'IMEI'
+				}, {
+					field : 'sdKeyUpdateStates',
+					title : 'SSD密钥更新状态'
+				}, {
+					field : 'regTime',
+					title : '注册时间',
+					sortable : true
+				} ]
+			};
+			$.table.init(options);
+		});
+	</script>
+</body>
+</html>
