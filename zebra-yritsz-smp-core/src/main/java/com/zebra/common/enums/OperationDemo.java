@@ -7,5 +7,5 @@ package com.zebra.common.enums;
  *
  */
 public enum OperationDemo {
-	remove, addSave, editSave, resetPwdSave, update, updateAvatar, clean, syncConfig, authDataScopeSave, changeStatus,authUser,cancelAuthUser,cancelAuthUserAll,selectAuthUserAll
+	remove, addSave, editSave, resetPwdSave, update, updateAvatar, clean, syncConfig, authDataScopeSave, changeStatus, authUser, cancelAuthUser, cancelAuthUserAll, selectAuthUserAll, batchForceLogout
 }

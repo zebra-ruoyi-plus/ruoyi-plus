@@ -1,19 +1,32 @@
 # RuoYi-plus
 ### 数据库脚本请加QQ群687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>在群文件下载
-#### 前沿
+
+#### 前言
 我们的终极目标是打造出一款由java开发的、快速搭建、高代码质量、简洁美观的开源商城系统！！！！！！
+
 #### 介绍
 RuoYi-plus是一款由java开发基于jdk1.8，SpringBoot2.x， springcloud G版本的后台管理系统， 可用于OA系统、 CRM系统、 PDM系统等二次开发， 代码清晰整洁、 界面简洁美观。非常试用于公司管理平台旧版本升级、新平台搭建快速整合、同时也是接私活利器。
 **特别注意： 本项目是在开源项目RuoYi（若依） 的基础上进行升级调整，感谢诺依大神。** 
-#### 软件架构
-RuoYi-plus是在开源项目RuoYi（ 若依） 的基础上进行升级调整，主要框架组成为springboot2.x， springcloud G版本（目前仅使用config配置中心） ，持久化使用mybatis和tk.mybatis插件,shiro权限管理，thymeleaf视图引擎模板，定时任务使用quartz，代码生成器使用velocity，maven进行项目管理。
 
+#### 软件架构
 - zebra-yritsz-smp-parent模块：所有项目父类，负责jar的依赖和版本管理。
-- zebra-yritsz-smp-config模块：cloud配置中心服务端。
+- zebra-yritsz-config-servser：cloud配置中心服务端。
 - zebra-yritsz-smp-smp模块：管理平台，主要为controller层和视图文件。
-- zebra-yritsz-smp-commons模块：通用模块，包过权限处理、持久化操作、工具类、配置中心客户端、数据源等。
 - zebra-yritsz-smp-generator模块：代码生成器。
 - zebra-yritsz-smp-quartz模块：定时任务。
+- zebra-yritsz-smp-core模块：核心模块，包过权限处理、持久化操作、工具类、配置中心客户端、数据源等。
+- zebra-yritsz-commons-dbean模块：通用db和bean。
+
+1. 核心框架：Spring Boot2.x，springcloud G版本。
+2. 安全框架：Apache Shiro。
+3. 模板引擎：Thymeleaf。
+4. 持久层框架：MyBatis。
+5. 定时任务:Quartz。
+6. 数据库连接池：Druid。
+7. 代码生成器：Velocity。
+8. 项目管理：maven。
+9. 前端框架：Bootstrap，Laiui。
+10. 其他插件：tk.mybatis，lombok等。
 
 #### 原版RuoYi升级调整介绍
 - 调整前提环境：中小型项目，并且可以快速搭建新的平台。
