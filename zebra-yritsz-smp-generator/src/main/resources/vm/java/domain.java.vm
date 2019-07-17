@@ -7,6 +7,9 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.Column;
 
+import lombok.Getter;
+import lombok.Setter;
+
 #foreach ($column in $columns)
 #if($column.attrType == 'Date' && ($column.attrname != 'createBy' && $column.attrname != 'createTime' && $column.attrname != 'updateBy' && $column.attrname != 'updateTime' && $column.attrname != 'remark'))
 import java.util.Date;
@@ -25,7 +28,9 @@ import java.util.Date;
  * @author ${author}
  * @date ${datetime}
  */
- @Table(name=" ${tableName}")
+@Table(name=" ${tableName}")
+@Getter
+@Setter
 public class ${className} extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
@@ -38,20 +43,6 @@ public class ${className} extends BaseEntity
  #end
 	@Column(name="${column.columnName}")
 	private $column.attrType $column.attrname;
-#end
-#end
-
-#foreach ($column in $columns)
-#if($column.attrname != 'createBy' && $column.attrname != 'createTime' && $column.attrname != 'updateBy' && $column.attrname != 'updateTime' && $column.attrname != 'remark')
-	public void set${column.attrName}($column.attrType $column.attrname) 
-	{
-		this.$column.attrname = $column.attrname;
-	}
-
-	public $column.attrType get${column.attrName}() 
-	{
-		return $column.attrname;
-	}
 #end
 #end
 
