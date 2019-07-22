@@ -76,5 +76,10 @@ public class ConfigServerApplication {
 	 */
 	@Value("${zebra.config.refresh}")
 	private String refresh;
+	/**
+	 * 高德地图key
+	 */
+	@Value("${zebra.gd_map_key}")
+	private String gd_map_key;
 
 }
