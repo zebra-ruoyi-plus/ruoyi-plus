@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="initial-scale=1.0, user-scalable=no, width=device-width">
+<title>输入提示后查询</title>
+<link rel="stylesheet"
+	href="https://cache.amap.com/lbs/static/main1119.css" />
+<script type="text/javascript"
+	th:src="@{https://webapi.amap.com/maps?v=1.4.15&key={key}&plugin=AMap.Autocomplete,AMap.PlaceSearch(key=${gd_map_key})}"></script>
+<script type="text/javascript"
+	src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+<th:block th:include="include :: header('定位')" />
+</head>
+<body>
+	<div id="container"></div>
+	<div id="myPageTop">
+		<form class="form-horizontal m" id="form-map-add">
+
+			<table>
+				<tr>
+					<td><label>请输入关键字：</label></td>
+				</tr>
+				<tr>
+					<td><input id="tipinput" required="required" /></td>
+				</tr>
+				<tr>
+					<td><label>经纬度</label></td>
+				</tr>
+				<tr>
+					<td><input id="lanAndlat" readonly="readonly"
+						required="required" style="background-color: #eee;" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+</body>
+<script type="text/javascript">
+	//地图加载
+	var map = new AMap.Map("container", {
+		resizeEnable : true
+	});
+	//输入提示
+	var autoOptions = {
+		input : "tipinput"
+	};
+	var auto = new AMap.Autocomplete(autoOptions);
+	var placeSearch = new AMap.PlaceSearch({
+		map : map
+	}); //构造地点查询类
+	AMap.event.addListener(auto, "select", select);//注册监听，当选中某条记录时会触发
+	function select(e) {
+		if (e.poi && e.poi.location) {
+			map.setZoom(15);
+			map.setCenter(e.poi.location);
+		}
+	}
+
+	//为地图注册click事件获取鼠标点击出的经纬度坐标
+	map.on('click', function(e) {
+		$("#lanAndlat").val(e.lnglat.getLng() + ',' + e.lnglat.getLat());
+		getAddress(e.lnglat.getLng(), e.lnglat.getLat());
+	});
+	function submitHandler() {
+		if ($.validate.form()) {
+			var lanAndlat = $("#lanAndlat").val();
+			if (!lanAndlat) {
+				layer.alert('请选择具体位置信息', {
+					icon : 2
+				});
+				return;
+			}
+			getAddress(lanAndlat.split(",")[0], lanAndlat.split(",")[1]);
+			//$.operate.save(prefix + "/add", $('#form-map-add').serialize());
+
+		}
+	}
+	function getAddress(lng, lat) {
+		console.log("经度：" + lng + "纬度" + lat);
+		var lnglatXY = [ lng, lat ];//地图上所标点的坐标
+		AMap.service('AMap.Geocoder', function() {//回调函数
+			geocoder = new AMap.Geocoder({});
+			geocoder.getAddress(lnglatXY, function(status, result) {
+				if (status === 'complete' && result.info === 'OK') {
+					//获得了有效的地址信息:
+					//即，result.regeocode.formattedAddress
+					console.log(result.regeocode.formattedAddress);
+					var address = result.regeocode.formattedAddress;
+					$("#tipinput").val(address);
+				} else {
+					$("#tipinput").val("");
+					layer.alert('获取位置信息失败', {
+						icon : 2
+					});
+				}
+			});
+		})
+	}
+</script>
+</html>
