@@ -10,7 +10,7 @@ import tk.mybatis.mapper.common.Mapper;
  * @author ${author}
  * @date ${datetime}
  */
-public interface ${className}Mapper   extends Mapper<${className}>
+public interface ${className}Mapper extends Mapper<${className}>
 {
 	/**
      * 查询${tableComment}信息

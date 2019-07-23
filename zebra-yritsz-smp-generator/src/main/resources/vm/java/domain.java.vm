@@ -28,7 +28,7 @@ import java.util.Date;
  * @author ${author}
  * @date ${datetime}
  */
-@Table(name=" ${tableName}")
+@Table(name="${tableName}")
 @Getter
 @Setter
 public class ${className} extends BaseEntity
