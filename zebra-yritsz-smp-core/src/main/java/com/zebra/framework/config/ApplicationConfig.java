@@ -1,8 +1,9 @@
 package com.zebra.framework.config;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * 程序注解配置
