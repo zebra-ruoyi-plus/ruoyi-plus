@@ -3,13 +3,16 @@ package com.zebra.common.core.controller;
 import java.beans.PropertyEditorSupport;
 import java.util.Date;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zebra.common.core.domain.AjaxResult;
@@ -24,7 +27,7 @@ import com.zebra.common.utils.sql.SqlUtil;
 
 /**
  * web层通用数据处理
- * 
+ *
  * @author ruoyi
  */
 public class BaseController
@@ -101,8 +104,16 @@ public class BaseController
     }
 
     /**
+	 * 响应返回数据
+	 *
+	 */
+	public AjaxResult data(Object data) {
+		return new AjaxResult(Type.SUCCESS, "success", data);
+	}
+
+    /**
      * 响应返回结果
-     * 
+     *
      * @param rows 影响行数
      * @return 操作结果
      */
@@ -113,7 +124,7 @@ public class BaseController
 
     /**
      * 响应返回结果
-     * 
+     *
      * @param result 结果
      * @return 操作结果
      */
