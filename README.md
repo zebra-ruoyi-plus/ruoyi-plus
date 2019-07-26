@@ -16,6 +16,7 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 - zebra-yritsz-smp-quartz模块：定时任务。
 - zebra-yritsz-smp-core模块：核心模块，包过权限处理、持久化操作、工具类、配置中心客户端、数据源等。
 - zebra-yritsz-commons-dbean模块：通用db和bean。
+- zebra-yritsz-commons-redis模块：通用redis。
 
 1. 核心框架：Spring Boot2.x，springcloud G版本。
 2. 安全框架：Apache Shiro。
@@ -26,15 +27,16 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 7. 代码生成器：Velocity。
 8. 项目管理：maven。
 9. 前端框架：Bootstrap，Laiui。
-10. 其他插件：tk.mybatis，lombok等。
+10. 缓存技术：Redis，Shiro自带缓存。
+11. 其他插件：tk.mybatis，lombok等。
 
 #### 原版RuoYi升级调整介绍
 - 调整前提环境：中小型项目，并且可以快速搭建新的平台。
 - maven管理：取消项目聚合，本人多接触快速搭建管理平台的需求，评估后感觉聚合项目不太适合，所以改使用普通父类子类集成，有新项目时直接继承统一父类，保障快速开发，版本统一。
-- 项目管理：整合system持久化模块，common通用模块，framework核心模块为zebra-yritsz-commons-dbean通用db-bean模块和zebra-yritsz-smp-core核心模块，对于中小项目来说，原项目模块太繁琐，而且各个模块分工不明确，整合为一个模块当有新项目需求事可以快速搭建。
+- 项目管理：增加redis通用模块，整合system持久化模块，common通用模块，framework核心模块为zebra-yritsz-commons-dbean通用db-bean模块和zebra-yritsz-smp-core核心模块，对于中小项目来说，原项目模块太繁琐，而且各个模块分工不明确，整合为一个模块当有新项目需求事可以快速搭建。
 - 框架管理：增加tk.mybatis插件，原项目虽然可以用代码生成器直接生成增删改查语句，但是繁琐业务下，需要在xml写sql等，使用tk.mybatis插件可以直接使用封装快速方法ql，极高的保障了开发的效率。
 - 配置管理：增加cloud config配置中心，当项目生态系统不仅限于管理平台，繁琐的配置成为增加工作量和出现问题的关键，所以增加配置中心，统一管理配置文件。
-- 其他修改：增加java代码神器lombok、消息转换器HttpMessageConverter...
+- 其他修改：增加Redis存储系统、java代码神器lombok、消息转换器HttpMessageConverter...
 - 有待升级：正在努力中...
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0714/135757_cbf2decc_2038874.jpeg "1562921075(1).jpg")
 
@@ -44,6 +46,10 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 - Maven-v3.3.x（建议）
 - SVN服务器（可选）如果使用配置中心则需要此项，反之 **需要调整代码不通过springCloud config获取配置信息** ，或者使用git。
 - GIT服务器（可选）如果使用配置中心则需要此项，反之 **需要调整代码不通过springCloud config获取配置信息** ，或者使用svn。
+
+#### 项目运行须知
+1. 项目运行有两种模式，详细见项目运行步骤。
+2. redis如果不需要，可以保留（不用搭建redis服务器也可以启动成功）。 
 
 #### 项目运行步骤一： **使用配置中心** 
 1. 创建数据库，执行数据库脚本;导入项目，导入完成后需要确保是maven项目，如果不是需要转换成maven项目。
