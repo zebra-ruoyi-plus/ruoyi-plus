@@ -1,7 +1,5 @@
 package com.zebra.web.controller.system;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +22,8 @@ import com.zebra.framework.util.ShiroUtils;
 import com.zebra.system.domain.SysUser;
 import com.zebra.system.service.ISysUserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 个人信息 业务处理
  *
@@ -31,9 +31,9 @@ import com.zebra.system.service.ISysUserService;
  */
 @Controller
 @RequestMapping("/system/user/profile")
+@Slf4j
 public class SysProfileController extends BaseController {
-	private static final Logger log = LoggerFactory.getLogger(SysProfileController.class);
-	private String prefix = "system/user/profile";
+ 	private String prefix = "system/user/profile";
 	@Autowired
 	private ISysUserService userService;
 	@Autowired

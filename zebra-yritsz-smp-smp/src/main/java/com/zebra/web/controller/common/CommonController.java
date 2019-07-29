@@ -3,8 +3,6 @@ package com.zebra.web.controller.common;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,15 +17,17 @@ import com.zebra.common.utils.StringUtils;
 import com.zebra.common.utils.file.FileUploadUtils;
 import com.zebra.common.utils.file.FileUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 通用请求处理
  *
  * @author ruoyi
  */
 @Controller
+@Slf4j
 public class CommonController {
-	private static final Logger log = LoggerFactory.getLogger(CommonController.class);
-	@Autowired
+ 	@Autowired
 	private ConfigServerApplication configServerApplication;
 	/**
 	 * 文件上传路径

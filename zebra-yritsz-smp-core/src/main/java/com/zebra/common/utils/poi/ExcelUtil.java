@@ -38,8 +38,6 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddressList;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFDataValidation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.zebra.common.annotation.Excel;
 import com.zebra.common.annotation.Excel.Type;
@@ -53,14 +51,15 @@ import com.zebra.common.utils.StringUtils;
 import com.zebra.common.utils.reflect.ReflectUtils;
 import com.zebra.common.utils.spring.SpringUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Excel相关处理
  *
  * @author ruoyi
  */
+@Slf4j
 public class ExcelUtil<T> {
-	private static final Logger log = LoggerFactory.getLogger(ExcelUtil.class);
-
 	/**
 	 * Excel sheet最大行数，默认65536
 	 */

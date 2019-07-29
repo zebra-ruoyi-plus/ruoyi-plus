@@ -11,13 +11,13 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.zebra.common.constant.ScheduleConstants;
 import com.zebra.common.exception.job.TaskException;
 import com.zebra.common.exception.job.TaskException.Code;
 import com.zebra.quartz.domain.SysJob;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 定时任务工具类
@@ -25,9 +25,9 @@ import com.zebra.quartz.domain.SysJob;
  * @author ruoyi
  *
  */
+@Slf4j
 public class ScheduleUtils
 {
-    private static final Logger log = LoggerFactory.getLogger(ScheduleUtils.class);
 
     /**
      * 得到quartz任务类

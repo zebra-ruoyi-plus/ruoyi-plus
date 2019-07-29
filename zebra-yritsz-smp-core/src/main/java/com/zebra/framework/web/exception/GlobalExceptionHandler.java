@@ -3,8 +3,6 @@ package com.zebra.framework.web.exception;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.authz.AuthorizationException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -17,15 +15,16 @@ import com.zebra.common.exception.LimitIpException;
 import com.zebra.common.utils.ServletUtils;
 import com.zebra.common.utils.security.PermissionUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 全局异常处理器
  *
  * @author ruoyi
  */
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
-	private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
 	/**
 	 * 权限校验失败 如果请求为ajax返回json，普通请求跳转页面
 	 */
