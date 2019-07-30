@@ -18,17 +18,35 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 - zebra-yritsz-commons-dbean模块：通用db和bean。
 - zebra-yritsz-commons-redis模块：通用redis。
 
-1. 核心框架：Spring Boot2.x，springcloud G版本。
-2. 安全框架：Apache Shiro。
-3. 模板引擎：Thymeleaf。
-4. 持久层框架：MyBatis。
-5. 定时任务:Quartz。
-6. 数据库连接池：Druid。
-7. 代码生成器：Velocity。
-8. 项目管理：maven。
-9. 前端框架：Bootstrap，Laiui。
-10. 缓存技术：Redis，Shiro自带缓存。
-11. 其他插件：tk.mybatis，lombok等。
+ **后台框架介绍：** 
+|  序号  |  核心技术  |  框架   | 阐述 |
+| --- | --- | --- | --- |
+|1|核心框架|Spring Boot2.x，springcloud G版本|springBoot 为核心框架，springcloud 为保留核心框架，目前仅使用cloudConfig(可选)。|
+|2|安全框架|Apache Shiro|core模块|
+|3|模板引擎|Thymeleaf|smp模块|
+|4|持久层框架|MyBatis|实现：dbean模块 配置：core模块|
+|5|定时任务|Quartz|quartz模块|
+|6|数据库连接池|Druid|实现：dbean模块 配置：core模块|
+|7|代码生成|Velocity|generator模块    |
+|8|项目管理|Maven|缺省  |
+|9|缓存技术|Redis，Shiro自带缓存| （实现：redis模块， 配置：core模块），core模块   |
+|10|其他插件|tk.mybatis，lombok等|（dben模块，core模块），全局  |
+
+ **前端框架：**
+|  序号  |  核心技术  |  框架   | 阐述 |
+| --- | --- | --- | --- |
+|1|核心框架|JQuery、Bootstrap|缺省|
+|2|table表格|bootstrap-table|缺省|
+|3|表格树插件|bootstrap-treetable|缺省|
+|4|表单导出|bootstrap-table-export、tableExport|缺省|
+|5|遮罩层弹出框|layui、layer|缺省|
+|6|ztree树插件|jquery.ztree|缺省|
+|7|下拉框插件|select2.min、bootstrap-select|缺省|
+|8|时间插件|bootstrap-datetimepicker|缺省|
+|9|富文本编辑|summernote|缺省|
+|10|文件上传|bootstrap-fileinput|缺省|
+|11|统计报表|echarts-all、jquery.peity、jquery.sparkline|缺省|
+|12|表单验证|jquery.validate|缺省|
 
 #### 原版RuoYi升级调整介绍
 - 调整前提环境：中小型项目，并且可以快速搭建新的平台。
