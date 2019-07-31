@@ -8,20 +8,13 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.fastjson.JSONObject;
 import com.zebra.common.annotation.Log;
-import com.zebra.common.config.ConfigServerApplication;
 import com.zebra.common.enums.BusinessStatus;
-import com.zebra.common.enums.OperationDemo;
-import com.zebra.common.exception.DemoModeException;
-import com.zebra.common.exception.LimitIpException;
 import com.zebra.common.json.JSON;
 import com.zebra.common.utils.ServletUtils;
 import com.zebra.common.utils.StringUtils;
@@ -43,49 +36,9 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional(rollbackFor = Exception.class)
 @Slf4j
 public class LogAspect {
-
-	@Autowired
-	private ConfigServerApplication configServerApplication;
-
 	// 配置织入点
 	@Pointcut("@annotation(com.zebra.common.annotation.Log)")
 	public void logPointCut() {
-	}
-
-	/**
-	 * 处理前执行
-	 *
-	 * @param joinPoint
-	 *            切点
-	 */
-	@Before(value = "logPointCut()")
-	public void Before(JoinPoint joinPoint) {
-		try {
-			String ip = ShiroUtils.getIp();
-			if (configServerApplication.getIps().contains(ip)) {
-				log.info("[信息]该用户地址以及被限制，操作ip:" + ShiroUtils.getIp());
-				throw new LimitIpException();
-			}
-			String methodName = joinPoint.getSignature().getName();
-			if (Boolean.parseBoolean(configServerApplication.getDemoEnabled())) {
-				System.out.println(JSONObject.toJSONString(OperationDemo.values()));
-				if (JSONObject.toJSONString(OperationDemo.values()).contains(methodName)) {
-					log.info("[信息]演示模式下不允许操作，操作ip:" + ShiroUtils.getIp());
-					throw new DemoModeException();
-				}
-			}
-		} catch (Exception ex) {
-			if (ex instanceof DemoModeException) {
-				throw new DemoModeException();
-			}
-			if (ex instanceof LimitIpException) {
-				throw new DemoModeException();
-			}
-			// 记录本地异常日志
-			log.error("==前置通知异常==");
-			log.error("异常信息:{}", ex.getMessage());
-			ex.printStackTrace();
-		}
 	}
 
 	/**
