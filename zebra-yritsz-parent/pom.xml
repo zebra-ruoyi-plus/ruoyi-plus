@@ -27,7 +27,7 @@
 		<poi.version>3.17</poi.version>
 		<velocity.version>1.7</velocity.version>
 		<kyro.version>4.0.0</kyro.version>
-		<mybatis.mapper.springboot.starter.version>2.0.1</mybatis.mapper.springboot.starter.version>
+		<mybatis.mapper.springboot.starter.version>2.1.5</mybatis.mapper.springboot.starter.version>
 	</properties>
 	<dependencies>
 		<dependency>
