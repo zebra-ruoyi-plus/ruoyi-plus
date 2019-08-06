@@ -1,5 +1,8 @@
 # RuoYi-plus
-### 数据库脚本请加QQ群687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>在群文件下载
+### 数据库脚本请加QQ群，在群文件下载。
+【技术交流群】751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
+"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>【技术支持群】687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>
+
 
 #### 前言
 我们的终极目标是打造出一款由java开发的、快速搭建、高代码质量、简洁美观的开源商城系统！！！！！！
@@ -83,11 +86,9 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 
 #### 技术交流
 - 官方技术QQ交流号：1579927646
-- 官方QQ技术交流群：687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**，数据库脚本和配置中心文件在群文件 
-- 官方QQ技术支持群：751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
-"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **入群费一百元**，扫码下方支付宝/微信收款码，支付后入群（说明：支付昵称）。
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![输入图片说明](https://images.gitee.com/uploads/images/2019/0716/152104_06096d89_2038874.jpeg "微信图片_20190716151916.jpg")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0716/152628_a5952a05_2038874.png "微信图片_20190716151912.png")
+- 官方QQ技术交流群：751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
+"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**，数据库脚本和配置中心文件在群文件 
+- 官方QQ技术支持群：687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **付费五元入群**
 
 #### 演示地址
 - 地址：http://www.yritsz.com/ruoyi-plus
