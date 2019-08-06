@@ -69,4 +69,22 @@ public class ConfigServerDruid {
 
 	@Value("${spring.datasource.druid.testOnReturn}")
 	private boolean testOnReturn;
+
+	@Value("${spring.datasource.druid.allow}")
+	private String allow;
+
+	@Value("${spring.datasource.druid.deny}")
+	private String deny;
+
+	@Value("${spring.datasource.druid.loginUsername}")
+	private String loginUsername;
+
+	@Value("${spring.datasource.druid.loginPassword}")
+	private String loginPassword;
+
+	@Value("${spring.datasource.druid.resetEnable}")
+	private String resetEnable;
+
+	@Value("${spring.datasource.druid.exclusions}")
+	private String exclusions;
 }

@@ -1,25 +1,8 @@
-# 数据源配置
+# \u6570\u636e\u6e90\u914d\u7f6e
 spring:
     datasource:
         druid:
-            # 从库数据源
+            # \u4ece\u5e93\u6570\u636e\u6e90
             slave:
-                # 从数据源开关/默认关闭
+                # \u4ece\u6570\u636e\u6e90\u5f00\u5173/\u9ed8\u8ba4\u5173\u95ed
                 enabled: false
-            webStatFilter: 
-                enabled: true
-            statViewServlet:
-                enabled: true
-                # 设置白名单，不填则允许所有访问
-                allow:
-                url-pattern: /monitor/druid/*
-            filter:
-                stat:
-                    enabled: true
-                    # 慢SQL记录
-                    log-slow-sql: true
-                    slow-sql-millis: 1000
-                    merge-sql: true
-                wall:
-                    config:
-                        multi-statement-allow: true
