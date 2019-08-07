@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties;
@@ -111,6 +112,21 @@ public class DruidConfig {
 	}
 
 	/**
+	 * 注册一个StatFilter
+	 *
+	 * @return
+	 */
+	@Bean
+	@Primary
+	public StatFilter statFilter() {
+		StatFilter statFilter = new StatFilter();
+		statFilter.setMergeSql(configServerDruid.isMergeSql());
+		statFilter.setLogSlowSql(configServerDruid.isLogSlowSql());
+		statFilter.setSlowSqlMillis(configServerDruid.getLowSqlMillis());
+		return statFilter;
+	}
+
+	/**
 	 * 注册一个StatViewServlet
 	 *
 	 * @return
@@ -147,7 +163,7 @@ public class DruidConfig {
 		// 添加过滤规则.
 		filterRegistrationBean.addUrlPatterns("/*");
 		// 添加忽略资源
-		filterRegistrationBean.addInitParameter("exclusions",configServerDruid.getExclusions());
+		filterRegistrationBean.addInitParameter("exclusions", configServerDruid.getExclusions());
 		return filterRegistrationBean;
 	}
 }

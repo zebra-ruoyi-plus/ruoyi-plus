@@ -87,4 +87,13 @@ public class ConfigServerDruid {
 
 	@Value("${spring.datasource.druid.exclusions}")
 	private String exclusions;
+
+	@Value("${spring.datasource.druid.mergeSql}")
+	private boolean mergeSql;
+
+	@Value("${spring.datasource.druid.slowSqlMillis}")
+	private long lowSqlMillis;
+
+	@Value("${spring.datasource.druid.logSlowSql}")
+	private boolean logSlowSql;
 }
