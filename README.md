@@ -94,3 +94,7 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 - 地址：http://www.yritsz.com/ruoyi-plus
 - 账号：tecom 
 - 密码：123456
+
+#### 源码地址
+- Gitee(主)：https://gitee.com/aimeng2017/RuoYi-plus
+- Github(辅)：https://github.com/zebra-ruoyi-plus/ruoyi-plus
