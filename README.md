@@ -1,7 +1,7 @@
 # RuoYi-plus
 ### 数据库脚本请加QQ群，在群文件下载。
 【技术交流群】751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
-"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>【技术支持群】687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>
+"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>【技术支持群】687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a>
 
 
 #### 前言
@@ -87,8 +87,8 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 #### 技术交流
 - 官方技术QQ交流号：1579927646
 - 官方QQ技术交流群：751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
-"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**，数据库脚本和配置中心文件在群文件 
-- 官方QQ技术支持群：687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **付费五元入群**
+"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**，数据库脚本和配置中心文件在群文件 
+- 官方QQ技术支持群：687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **付费五元入群**
 
 #### 演示地址
 - 地址：http://www.yritsz.com/ruoyi-plus
