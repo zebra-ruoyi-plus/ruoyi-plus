@@ -1,7 +1,7 @@
 # RuoYi-plus
 ### 数据库脚本请加QQ群，在群文件下载。
-【技术交流群】751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
-"><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a>【技术支持群】687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a>
+【技术支持群】687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a>【技术交流群】751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
+"><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a>
 
 
 #### 前言
@@ -59,7 +59,7 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 4.  **框架管理：** 增加tk.mybatis插件，原项目虽然可以用代码生成器直接生成增删改查语句，但是繁琐业务下，需要在xml写sql映射过于繁琐，使用tk.mybatis插件可以直接使用封装快速方法，极高的保障了开发的效率。
 5.  **配置管理：** 增加cloud config配置中心，当项目生态系统不仅限于管理平台，繁琐的配置成为增加工作量和出现问题的关键，所以增加配置中心，统一管理配置文件。
 6.  **其他修改：** 增加Redis存储系统、java代码神器lombok、消息转换器HttpMessageConverter...
-7.  **有待升级：** oss单点登录下个版本更新，该版本会增加spring cloud生态中注册中心Eureka、熔断机制等。
+7.  **有待升级：** sso单点登录下个版本更新，该版本会增加spring cloud生态中注册中心Eureka、熔断机制等。
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0714/135757_cbf2decc_2038874.jpeg "1562921075(1).jpg")
 
 #### 项目部署要求
