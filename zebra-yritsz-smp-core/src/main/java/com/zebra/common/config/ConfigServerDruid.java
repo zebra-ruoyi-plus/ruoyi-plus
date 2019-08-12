@@ -96,4 +96,18 @@ public class ConfigServerDruid {
 
 	@Value("${spring.datasource.druid.logSlowSql}")
 	private boolean logSlowSql;
+
+	@Value("${spring.datasource.druid.filters}")
+	private String filters;
+
+	@Value("${spring.datasource.druid.connectionProperties:}")
+	private String connectionProperties;
+
+	@Value("${spring.datasource.druid.poolPreparedStatements}")
+	private boolean poolPreparedStatements ;
+
+	@Value("${spring.datasource.druid.maxPoolPreparedStatementPerConnectionSize}")
+	private Integer maxPoolPreparedStatementPerConnectionSize ;
+
+
 }

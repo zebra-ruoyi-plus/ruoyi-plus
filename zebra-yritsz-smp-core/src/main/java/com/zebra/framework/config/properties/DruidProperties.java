@@ -1,19 +1,26 @@
 package com.zebra.framework.config.properties;
 
+import java.sql.SQLException;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Configuration;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.zebra.common.config.ConfigServerDruid;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * druid 配置属性
- * 
- * @author ruoyi
+ *
+ * @author zebra
  */
 @Configuration
+@Slf4j
 public class DruidProperties {
 	public DruidDataSource dataSource(DruidDataSource datasource, ConfigServerDruid configServerDruid,
 			Boolean is_save) {
+		log.info("[信息]：初始化Druid的数据源");
 		datasource.setDbType(configServerDruid.getType());
 		datasource.setDriverClassName(configServerDruid.getDriverClassName());
 		if (!is_save) {
@@ -56,6 +63,21 @@ public class DruidProperties {
 		datasource.setTestOnBorrow(configServerDruid.isTestOnBorrow());
 		/** 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。 */
 		datasource.setTestOnReturn(configServerDruid.isTestOnReturn());
+
+		if (!StringUtils.isEmpty(configServerDruid.getConnectionProperties())) {
+			datasource.setConnectionProperties(configServerDruid.getConnectionProperties());
+		}
+		try {
+			/** 配置监控统计拦截的filters */
+			datasource.setFilters(configServerDruid.getFilters());
+		} catch (SQLException e) {
+			log.error("[信息]filters错误", e);
+
+		}
+		/** 打开PSCache，并且指定每个连接上PSCache的大小 */
+		datasource.setPoolPreparedStatements(configServerDruid.isPoolPreparedStatements());
+		datasource.setMaxPoolPreparedStatementPerConnectionSize(
+				configServerDruid.getMaxPoolPreparedStatementPerConnectionSize());
 		return datasource;
 	}
 }
