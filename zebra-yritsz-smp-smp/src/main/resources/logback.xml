@@ -4,8 +4,7 @@
 
 	<property name="separator" value="‖"></property>
 
-	<property name="serverName" value="zebra-yritsz-smp-smp"></property>
-
+	<springProperty scope="context" name="serverName" source="spring.application.name" defaultValue="zebra-yritsz-smp-smp"/>
 
 	<!-- 负责写日志,控制台日志 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

@@ -4,7 +4,7 @@
 
 	<property name="separator" value="‖"></property>
 
-	<springProperty scope="context" name="serverName" source="spring.application.name" defaultValue="laser_project"/>
+	<springProperty scope="context" name="serverName" source="spring.application.name" defaultValue="zebra-yritsz-config-servser"/>
 
 	<!-- 负责写日志,控制台日志 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
