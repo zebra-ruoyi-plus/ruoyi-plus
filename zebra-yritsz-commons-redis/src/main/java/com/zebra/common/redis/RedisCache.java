@@ -18,8 +18,10 @@ import org.springframework.stereotype.Component;
  *         2019-07-26
  *
  */
+@SuppressWarnings("unchecked")
 @Component(value = "redisCache")
 public class RedisCache implements IBaseCache {
+	@SuppressWarnings("rawtypes")
 	@Resource
 	protected RedisTemplate redisTemplate;
 
