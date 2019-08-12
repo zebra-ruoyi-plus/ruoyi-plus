@@ -34,9 +34,9 @@ import com.zebra.framework.datasource.DynamicDataSource;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * druid 配置多数据源
+ * druid 配置多数据源和sql监控服务
  *
- * @author ruoyi
+ * @author zebra
  */
 @Configuration
 @Slf4j
