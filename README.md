@@ -16,11 +16,12 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 **特别注意： 本项目是在开源项目RuoYi（若依） 的基础上进行升级调整，感谢诺依大神。** 
 
 #### 软件架构
+
 通用模块架构：
 - zebra-yritsz-smp-parent模块：所有项目父类，负责jar的依赖和版本管理。
 - zebra-yritsz-commons-dbean模块：通用db和bean。
 - zebra-yritsz-commons-redis模块：通用redis。
-- zebra-yritsz-config-servser：cloud配置中心服务端。
+- zebra-yritsz-config-servser模块：cloud配置中心服务端。
 
 SMP管理平台架构
 - zebra-yritsz-smp-smp模块：管理平台，主要为controller层和视图文件。
@@ -29,9 +30,9 @@ SMP管理平台架构
 - zebra-yritsz-smp-core模块：核心模块，包过权限处理、持久化操作、工具类、配置中心客户端、数据源等。
 
 API接口服务架构：
-- zebra-yritsz-application-eureka：Eureka注册中心模块。
-- zebra-yritsz-api-provider：服务提供者模块。
-- zebra-yritsz-api-consumer：服务消费者模块。
+- zebra-yritsz-application-eureka模块：Eureka注册中心。
+- zebra-yritsz-api-provider模块：服务提供者对内开放包括消费者consumer。
+- zebra-yritsz-api-consumer模块：服务消费者，对外开放包括APP、微端、h5等。
 
  **后台框架介绍：** 
 |  序号  |  核心技术  |  框架   | 阐述 |
