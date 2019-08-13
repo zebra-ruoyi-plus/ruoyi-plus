@@ -2,7 +2,7 @@ export JAVA_HOME='/usr/local/jdk1.8.0_131/'
 export PATH=$JAVA_HOME/bin:$PATH
 JAVA="java -jar -server -Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseConcMarkSweepGC "
 #jar包名称  别名
-PROGRAM="zebra-yritsz-smp-1.0.1.jar zebra SMP"
+PROGRAM="zebra-yritsz-smp-2.0.jar zebra SMP"
 if [ $1 == "start" ] 
   then   
    echo $PROGRAM  "starting !"

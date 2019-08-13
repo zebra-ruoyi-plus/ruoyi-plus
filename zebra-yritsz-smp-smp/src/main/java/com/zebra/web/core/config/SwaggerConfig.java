@@ -26,6 +26,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 	@Autowired
 	private ConfigServerApplication configServerApplication;
+
 	/**
 	 * 创建API
 	 */
@@ -51,12 +52,12 @@ public class SwaggerConfig {
 		// 用ApiInfoBuilder进行定制
 		return new ApiInfoBuilder()
 				// 设置标题
-				.title("标题：ruoyi-plus管理系统_接口文档")
+				.title("标题：ruoyi-plus管理系统_API接口文档")
 				// 描述
-				.description("描述：用于管理集团旗下公司的人员信息,具体包括XXX,XXX模块...")
+				.description("用途：用于提供APP、微端、H5等API接口服务")
 				// 作者信息
 				.contact(new Contact(configServerApplication.getName(), null, null))
 				// 版本
-				.version("版本号:" +configServerApplication.getVersion()).build();
+				.version("版本号:" + configServerApplication.getVersion()).build();
 	}
 }

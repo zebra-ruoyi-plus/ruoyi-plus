@@ -4,20 +4,17 @@
 	<parent>
 		<groupId>com.temple.yritsz.parent</groupId>
 		<artifactId>zebra-yritsz-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>2.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.temple.yritsz.smp</groupId>
 	<artifactId>zebra-yritsz-smp-core</artifactId>
-	<version>1.0.1</version>
-
+	<version>${temple.version}</version>
 	<name>zebra-yritsz-smp-core</name>
 	<description>通用类</description>
 
-	<properties>
-		<temple.version>1.0.1</temple.version>
-	</properties>
 	<dependencies>
+		<!-- cloud config -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
@@ -91,11 +88,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-		<!--阿里数据库连接池 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
 		</dependency>
 		<!--验证码 -->
 		<dependency>

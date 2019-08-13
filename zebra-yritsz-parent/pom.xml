@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.temple.yritsz.parent</groupId>
 	<artifactId>zebra-yritsz-parent</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>2.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>zebra-yritsz-smp-parent</name>
 	<description>父类</description>
 	<properties>
-		<temple.version>2.0.1-SNAPSHOT</temple.version>
+		<temple.version>2.0</temple.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>

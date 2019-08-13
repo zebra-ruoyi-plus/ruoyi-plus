@@ -4,14 +4,19 @@
 	<parent>
 		<groupId>com.temple.yritsz.parent</groupId>
 		<artifactId>zebra-yritsz-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>2.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.temple.yritsz.commons</groupId>
 	<artifactId>zebra-yritsz-dbean</artifactId>
-	<version>1.0.1</version>
+	<version>${temple.version}</version>
 	<name>zebra-yritsz-dbean</name>
 	<description>db和bean模块</description>
 	<dependencies>
+		<!--阿里数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
 		<!-- tkmybatis插件 -->
 		<dependency>
 			<groupId>tk.mybatis</groupId>

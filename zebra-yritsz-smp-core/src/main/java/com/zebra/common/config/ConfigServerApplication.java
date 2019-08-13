@@ -82,4 +82,10 @@ public class ConfigServerApplication {
 	@Value("${zebra.gd_map_key}")
 	private String gd_map_key;
 
+	/**
+	 * api服务url地址
+	 */
+	@Value("${zebra.api_url}")
+	private String api_url;
+
 }

@@ -4,19 +4,15 @@
 	<parent>
 		<groupId>com.temple.yritsz.parent</groupId>
 		<artifactId>zebra-yritsz-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>2.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.temple.yritsz.smp</groupId>
 	<artifactId>zebra-yritsz-smp-generator</artifactId>
-	<version>1.0.1</version>
+	<version>${temple.version}</version>
 	<name>zebra-yritsz-smp-generator</name>
 	<description>代码生成模块	</description>
-
-	<properties>
-		<temple.version>1.0.1</temple.version>
-	</properties>
-
+	
 	<dependencies>
 		<!--velocity代码生成使用模板 -->
 		<dependency>
