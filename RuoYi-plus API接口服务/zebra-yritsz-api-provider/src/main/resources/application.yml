@@ -1,0 +1,18 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 1212
+#\u8be5\u914d\u7f6e\u548ccloud\u7684bootstrap.properties\u914d\u7f6e\u9879\u51b2\u7a81\uff0c\u5f85\u89e3\u51b3
+spring:
+  application:
+    name: zebra-yritsz-api-provider
+# MyBatis
+mybatis:
+    # \u641c\u7d22\u6307\u5b9a\u5305\u522b\u540d
+    typeAliasesPackage: com.zebra
+    # \u914d\u7f6emapper\u7684\u626b\u63cf\uff0c\u627e\u5230\u6240\u6709\u7684mapper.xml\u6620\u5c04\u6587\u4ef6
+    mapperLocations: classpath*:mapper/**/*Mapper.xml
+    # \u52a0\u8f7d\u5168\u5c40\u7684\u914d\u7f6e\u6587\u4ef6
+    configLocation: classpath:mybatis/mybatis-config.xml
