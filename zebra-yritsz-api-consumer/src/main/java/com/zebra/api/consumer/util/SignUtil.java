@@ -25,7 +25,7 @@ public class SignUtil {
 	 *            签名方式
 	 * @return 签名
 	 */
-	public static String generateSignature(final Map<String, String> data, String key, SignType signType)
+	public static String generateSignature(final Map<String, Object> data, String key, SignType signType)
 			throws Exception {
 		Set<String> keySet = data.keySet();
 		String[] keyArray = keySet.toArray(new String[keySet.size()]);
@@ -35,8 +35,8 @@ public class SignUtil {
 			if (k.equals(SignConstants.FIELD_SIGN)) {
 				continue;
 			}
-			if (data.get(k) != null && data.get(k).trim().length() > 0) // 参数值为空，则不参与签名
-				sb.append(k).append("=").append(data.get(k).trim()).append("&");
+			if (data.get(k) != null && data.get(k).toString().trim().length() > 0) // 参数值为空，则不参与签名
+				sb.append(k).append("=").append(data.get(k).toString().trim()).append("&");
 		}
 		sb.append("key=").append(key);
 		if (SignType.MD5.equals(signType)) {
