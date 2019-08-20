@@ -38,6 +38,15 @@
 			<artifactId>zebra-yritsz-dbean</artifactId>
 			<version>${temple.version}</version>
 		</dependency>
+		<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -217,7 +217,7 @@ public class GenUtils
 
     static
     {
-        javaTypeMap.put("tinyint", "Integer");
+        javaTypeMap.put("tinyint", "Boolean");
         javaTypeMap.put("smallint", "Integer");
         javaTypeMap.put("mediumint", "Integer");
         javaTypeMap.put("int", "Integer");

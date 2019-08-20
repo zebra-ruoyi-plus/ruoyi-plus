@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zebra.bussiness.mapper.ApiSecurityMapper">
+    
+    <resultMap type="ApiSecurity" id="ApiSecurityResult">
+        <result property="apiKey"    column="api_key"    />
+        <result property="apiSecret"    column="api_secret"    />
+        <result property="apiStatus"    column="api_status"    />
+        <result property="apiType"    column="api_type"    />
+        <result property="apiCreateTime"    column="api_create_time"    />
+        <result property="apiUpdateTime"    column="api_update_time"    />
+    </resultMap>
+	
+	<sql id="selectApiSecurityVo">
+        select api_key, api_secret, api_status, api_type, api_create_time, api_update_time from t_api_security
+    </sql>
+	
+    <select id="selectApiSecurityList" parameterType="ApiSecurity" resultMap="ApiSecurityResult">
+        <include refid="selectApiSecurityVo"/>
+        <where>  
+            <if test="apiKey != null  and apiKey != '' "> and api_key = #{apiKey}</if>
+             <if test="apiSecret != null  and apiSecret != '' "> and api_secret = #{apiSecret}</if>
+             <if test="apiStatus != null "> and api_status = #{apiStatus}</if>
+             <if test="apiType != null "> and api_type = #{apiType}</if>
+             <if test="apiCreateTime != null "> and api_create_time = #{apiCreateTime}</if>
+             <if test="apiUpdateTime != null "> and api_update_time = #{apiUpdateTime}</if>
+         </where>
+    </select>
+    
+    <select id="selectApiSecurityById" parameterType="String" resultMap="ApiSecurityResult">
+        <include refid="selectApiSecurityVo"/>
+        where api_key = #{apiKey}
+    </select>
+        
+    <insert id="insertApiSecurity" parameterType="ApiSecurity">
+        insert into t_api_security
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="apiKey != null  and apiKey != ''  ">api_key,</if>
+			<if test="apiSecret != null  and apiSecret != ''  ">api_secret,</if>
+			<if test="apiStatus != null  ">api_status,</if>
+			<if test="apiType != null  ">api_type,</if>
+			<if test="apiCreateTime != null  ">api_create_time,</if>
+			<if test="apiUpdateTime != null  ">api_update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="apiKey != null  and apiKey != ''  ">#{apiKey},</if>
+			<if test="apiSecret != null  and apiSecret != ''  ">#{apiSecret},</if>
+			<if test="apiStatus != null  ">#{apiStatus},</if>
+			<if test="apiType != null  ">#{apiType},</if>
+			<if test="apiCreateTime != null  ">#{apiCreateTime},</if>
+			<if test="apiUpdateTime != null  ">#{apiUpdateTime},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateApiSecurity" parameterType="ApiSecurity">
+        update t_api_security
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="apiSecret != null  and apiSecret != ''  ">api_secret = #{apiSecret},</if>
+            <if test="apiStatus != null  ">api_status = #{apiStatus},</if>
+            <if test="apiType != null  ">api_type = #{apiType},</if>
+            <if test="apiCreateTime != null  ">api_create_time = #{apiCreateTime},</if>
+            <if test="apiUpdateTime != null  ">api_update_time = #{apiUpdateTime},</if>
+        </trim>
+        where api_key = #{apiKey}
+    </update>
+
+	<delete id="deleteApiSecurityById" parameterType="String">
+        delete from t_api_security where api_key = #{apiKey}
+    </delete>
+	
+    <delete id="deleteApiSecurityByIds" parameterType="String">
+        delete from t_api_security where api_key in 
+        <foreach item="apiKey" collection="array" open="(" separator="," close=")">
+            #{apiKey}
+        </foreach>
+    </delete>
+    
+</mapper>
