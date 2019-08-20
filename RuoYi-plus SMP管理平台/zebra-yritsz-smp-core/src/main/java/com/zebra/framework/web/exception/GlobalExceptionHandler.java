@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zebra.common.core.domain.AjaxResult;
 import com.zebra.common.exception.BusinessException;
+import com.zebra.common.exception.CacheException;
 import com.zebra.common.exception.DemoModeException;
 import com.zebra.common.exception.LimitIpException;
 import com.zebra.common.utils.ServletUtils;
@@ -97,5 +98,13 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(LimitIpException.class)
 	public AjaxResult limitIpException(LimitIpException e) {
 		return AjaxResult.error("ip受限，不允许任何操作，请联系管理员");
+	}
+
+	/**
+	 * 演示模式异常
+	 */
+	@ExceptionHandler(CacheException.class)
+	public AjaxResult cacheException(CacheException e) {
+		return AjaxResult.error("缓存更新失败，请稍后重试");
 	}
 }

@@ -27,6 +27,11 @@
 			<groupId>com.esotericsoftware</groupId>
 			<artifactId>kryo</artifactId>
 		</dependency>
-
+		<!-- 公共db和bean -->
+		<dependency>
+			<groupId>com.temple.yritsz.commons</groupId>
+			<artifactId>zebra-yritsz-dbean</artifactId>
+			<version>${temple.version}</version>
+		</dependency>
 	</dependencies>
 </project>

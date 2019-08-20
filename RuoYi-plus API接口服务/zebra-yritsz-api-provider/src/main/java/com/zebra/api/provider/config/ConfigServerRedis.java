@@ -40,4 +40,6 @@ public class ConfigServerRedis {
 	@Value("${spring.redis.timeout}")
 	private long timeout;
 
+	@Value("${spring.redis.key}")
+	private String key;
 }

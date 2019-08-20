@@ -143,12 +143,6 @@
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 		</dependency>
-		<!-- 公共db和bean -->
-		<dependency>
-			<groupId>com.temple.yritsz.commons</groupId>
-			<artifactId>zebra-yritsz-dbean</artifactId>
-			<version>${temple.version}</version>
-		</dependency>
 		<!-- 公共redis模块 -->
 		<dependency>
 			<groupId>com.temple.yritsz.commons</groupId>

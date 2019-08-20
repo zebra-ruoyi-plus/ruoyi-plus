@@ -12,8 +12,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@MapperScan("com.zebra.**.mapper")
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@MapperScan("com.zebra.**.mapper")
 @EnableDiscoveryClient
 @Slf4j
 public class Application {
@@ -26,9 +26,9 @@ public class Application {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
-	PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer();
-	c.setIgnoreUnresolvablePlaceholders(true);
-	return c;
+		PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer();
+		c.setIgnoreUnresolvablePlaceholders(true);
+		return c;
 	}
 
 }

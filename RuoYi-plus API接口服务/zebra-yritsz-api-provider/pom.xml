@@ -32,20 +32,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- 公共db和bean -->
+		<!-- 公共redis -->
 		<dependency>
 			<groupId>com.temple.yritsz.commons</groupId>
-			<artifactId>zebra-yritsz-dbean</artifactId>
+			<artifactId>zebra-yritsz-redis</artifactId>
 			<version>${temple.version}</version>
-		</dependency>
-		<!-- redis -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

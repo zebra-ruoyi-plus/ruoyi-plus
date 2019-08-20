@@ -9,41 +9,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zebra.api.provider.bean.Json;
 import com.zebra.api.provider.server.base.BaseServer;
-import com.zebra.api.provider.service.DemoService;
+import com.zebra.api.provider.service.APISecurityService;
 
 /**
- * api服务提供者（demo实例）
+ * api服务提供者（api安全信息）
  *
  * @author zebra
  *
  */
 @RestController
-public class DemoServer extends BaseServer {
+public class APISecurityServer extends BaseServer {
 	@Autowired
-	private DemoService demoService;
+	private APISecurityService apiSecurityService;
 
 	/**
-	 * 获取公告信息
+	 * 获取key对应api安全信息
 	 *
-	 * @param noticeId
+	 * @param key
 	 * @return
 	 */
-	@RequestMapping(value = "/getNotice/{noticeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAPISecurity/{key}", method = RequestMethod.POST)
 	@ResponseBody
-	public Json getNotice(@PathVariable Long noticeId) {
-		return demoService.getNotice(noticeId);
-	}
-
-	/**
-	 * 获取公告列表
-	 *
-	 * @param noticeId
-	 * @return
-	 */
-	@RequestMapping(value = "/getNoticeList", method = RequestMethod.POST)
-	@ResponseBody
-	public Json getNoticeList() {
-		return demoService.getNoticeList();
+	public Json getNotice(@PathVariable String key) {
+		return apiSecurityService.getAPISecurity(key);
 	}
 
 }

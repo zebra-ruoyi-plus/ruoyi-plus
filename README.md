@@ -21,19 +21,25 @@ RuoYi-plus开源后台管理系统由java开发基于SpringBoot2.x， springclou
 - zebra-yritsz-smp-parent模块：所有项目父类，负责jar的依赖和版本管理。
 - zebra-yritsz-commons-dbean模块：通用db和bean。
 - zebra-yritsz-commons-redis模块：通用redis。
-- zebra-yritsz-config-servser模块：cloud配置中心服务端。
+
+核心服务模块架构：
+- zebra-yritsz-config-servser模块：cloud配置中心服务 **（独立：不依赖Eureka注册中心）** 
+- zebra-yritsz-application-eureka模块：Eureka注册中心。
+
 
 SMP管理平台架构
 - zebra-yritsz-smp-smp模块：管理平台，主要为controller层和视图文件。
 - zebra-yritsz-smp-generator模块：代码生成器。
 - zebra-yritsz-smp-quartz模块：定时任务。
 - zebra-yritsz-smp-core模块：核心模块，包过权限处理、持久化操作、工具类、配置中心客户端、数据源等。
+-  **依赖cloud配置中心服务模块（可选）** 
 
 API接口服务架构：
-- zebra-yritsz-application-eureka模块：Eureka注册中心。
 - zebra-yritsz-api-provider模块：服务提供者对内开放包括消费者consumer。
 - zebra-yritsz-api-consumer模块：服务消费者，对外开放包括APP、微端、h5等。
-
+-  **依赖cloud配置中心服务模块（可选）** 
+-  **依赖Eureka注册中心模块（必选）** 
+ 
  **后台框架介绍：** 
 |  序号  |  核心技术  |  框架   | 阐述 |
 | --- | --- | --- | --- |
@@ -117,7 +123,7 @@ API接口服务架构：
 - 官方技术QQ交流号：1579927646
 - 官方QQ技术交流群：751872263<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5wYOaQe
 "><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**，数据库脚本和配置中心文件在群文件 
-- 官方QQ技术支持群：687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**
+- 官方QQ技术支持群：687672649<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5eBNzMW"><img border="0" src="https://images.gitee.com/uploads/images/2019/0808/111020_23a5e7c3_2038874.png" alt="ruoyi-plus" title="ruoyi-plus"></a> **免费入群**，数据库脚本和配置中心文件在群文件 
 
 #### 演示地址
 - 地址：http://www.yritsz.com/ruoyi-plus
